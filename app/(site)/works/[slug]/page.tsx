@@ -1,8 +1,6 @@
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { draftMode } from "next/headers"
-import { Footer } from "@/components/footer"
-import { Navigation } from "@/components/navigation"
 import { PortableTextRenderer } from "@/components/portable-text"
 import { sanityFetch } from "@/sanity/lib/fetch"
 import { projectBySlugQuery, featuredProjectsQuery } from "@/sanity/lib/queries"
@@ -55,7 +53,6 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 
   return (
     <main className="min-h-screen bg-[#FAF7F2] text-[#1A1815]">
-      <Navigation />
 
       <section className="pt-28 pb-16 px-5 md:px-4">
         <div className="max-w-[1200px] mx-auto">
@@ -181,7 +178,6 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         </section>
       ) : null}
 
-      <Footer />
     </main>
   )
 }
