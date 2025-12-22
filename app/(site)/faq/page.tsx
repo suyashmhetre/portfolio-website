@@ -1,6 +1,4 @@
 import { draftMode } from "next/headers"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
 import { sanityFetch } from "@/sanity/lib/fetch"
 import { faqQuery } from "@/sanity/lib/queries"
 import { PortableTextRenderer } from "@/components/portable-text"
@@ -17,7 +15,6 @@ export default async function FaqPage() {
 
   return (
     <main className="min-h-screen bg-[#FAF7F2] text-[#1A1815]">
-      <Navigation />
 
       <section className="pt-28 pb-12 px-6 md:px-10">
         <div className="max-w-[900px] mx-auto">
@@ -45,8 +42,6 @@ export default async function FaqPage() {
           ))}
         </div>
       </section>
-
-      <Footer />
     </main>
   )
 }

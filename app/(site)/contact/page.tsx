@@ -8,7 +8,6 @@ import type { ContactInfo } from "@/sanity/lib/types"
 import ContactForm from "./contact-form"
 import { TextureOverlay } from "@/components/texture-overlay"
 import { ScrollWeightText } from "@/components/scroll-weight-text"
-import { GradientButton } from "@/components/gradient-button"
 
 
 export default async function ContactPage() {

@@ -11,9 +11,9 @@ type TextureName =
   | "marble"
 
 const TEXTURE_MAP: Record<TextureName, string> = {
-  paper: "/textures/paper-texture.png",
-  canvas: "/textures/canvas-texture.png",
-  stone: "/textures/stone-concrete.jpg",
+   paper: "/textures/marble-white.webp",       // temp fallback
+  canvas: "/textures/bronze-metal.webp",      // temp fallback
+  stone: "/textures/weathered-metal.webp",    // temp fallback
   bronze: "/textures/bronze-metal.webp",
   "weathered-metal": "/textures/weathered-metal.webp",
   "gold-leaf": "/textures/gold-leaf.webp",

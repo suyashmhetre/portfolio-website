@@ -14,10 +14,19 @@ export default function ContactForm() {
 
   const [error, setError] = useState<string | null>(null)
 
-  const handleSubmit = async (e: React.FormEvent) => {
+ const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setError(null)
+     // Client-side guards to satisfy API schema
+    if (!values.type) values.type = "other"
+    if (!values.budget) values.budget = "<50k"
+    if (!values.location || values.location.trim().length < 3) values.location = "India"
+    if (!values.message || values.message.trim().length < 50) {
+      setError("Please provide at least 50 characters describing your project.")
+      setIsSubmitting(false)
+      return
+    }
     
     try {
       // Prepare data for API
@@ -26,11 +35,14 @@ export default function ContactForm() {
         email: values.email || "",
         phone: values.phone || "",
         company: values.organization || "",
-        projectType: values.type || "other",
-        location: values.location || "Not specified",
+         projectType: (values.type as "sculpture"|"mural"|"installation"|"memorial"|"other") || "other",
+        projectTypeOther:
+          values.type && !["sculpture","mural","installation","memorial","other"].includes(values.type)
+            ? values.type : undefined,
+       location: values.location || "India",
         isPublicSpace: true,
         timeline: "flexible",
-        budgetRange: values.budget || "<50k",
+         budgetRange: (values.budget as "<10k"|"15k-20k"|"25k-30k"|"35k-40k"|"50k+") || "<50k",
         budgetConfirmed: false,
         hasArchitect: false,
         hasBuilder: false,
@@ -70,7 +82,7 @@ export default function ContactForm() {
       <div className="text-center py-20">
         <TextReveal>
           <div className="w-16 h-16 mx-auto mb-6 rounded-full border border-[#B8963F] flex items-center justify-center">
-            <svg width="24" height="24" viewBox="24 24" fill="none" className="text-[#B8963F]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#B8963F]">
               <path
                 d="M5 13l4 4L19 7"
                 stroke="currentColor"
@@ -114,7 +126,7 @@ export default function ContactForm() {
         />
         <label className={`form-label ${focused === "name" || values.name ? "active" : ""}`}>Enter Your name...</label>
         <div
-          className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "name" ? "w-full" : "w-0"}`}
+          className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "organization" ? "w-full" : "w-0"}`}
           style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
         />
       </div>
@@ -157,7 +169,7 @@ export default function ContactForm() {
           Enter Organization / Company Name...
         </label>
         <div
-          className={`absolute bottom-0 left-0 h-[px] transition-all duration-300 ${focused === "organization" ? "w-full" : "w-0"}`}
+          className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "organization" ? "w-full" : "w-0"}`}
           style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
         />
       </div>
@@ -185,24 +197,29 @@ export default function ContactForm() {
 
       {/* Budget Range */}
       <div className="form-group">
-        <input
-          type="text"
+        <select
           name="budget"
-          placeholder=" "
-          value={values.budget || ""}
+          value={values.budget || "<50k"}
           onChange={(e) => handleChange("budget", e.target.value)}
           onFocus={() => setFocused("budget")}
           onBlur={() => setFocused(null)}
           className="form-input"
-        />
+          aria-label="Budget Range"
+        >
+          <option value="select budget">Please select Budget Range...</option>
+          <option value="<10k"> 10k</option>
+          <option value="15k-20k">15k-20k</option>
+          <option value="25k-30k">25k-30k</option>
+          <option value="35k-40k">35k-40k</option>
+          <option value="50k+">More than 50k+</option>
+        </select>
         <label className={`form-label ${focused === "budget" || values.budget ? "active" : ""}`}>
           Estimated Budget Range...
         </label>
-        <div
-          className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "budget" ? "w-full" : "w-0"}`}
-          style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
-        />
-      </div>
+        <div className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "budget" ? "w-full" : "w-0"}`}
+             style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }} 
+/>
+        </div>
 
       {/* Message */}
       <div className="form-group">

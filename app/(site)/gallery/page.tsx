@@ -1,8 +1,5 @@
 import Image from "next/image"
-
 import { draftMode } from "next/headers"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
 import { sanityFetch } from "@/sanity/lib/fetch"
 import { galleryQuery } from "@/sanity/lib/queries"
 import { urlFor } from "@/sanity/lib/image"
@@ -24,7 +21,6 @@ export default async function GalleryPage() {
 
   return (
     <main className="min-h-screen bg-[#FAF7F2] text-[#1A1815]">
-      <Navigation />
 
       <section className="pt-28 pb-12 px-6 md:px-10">
         <div className="max-w-[1200px] mx-auto">
@@ -56,7 +52,6 @@ export default async function GalleryPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   )
 }

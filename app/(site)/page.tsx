@@ -35,7 +35,7 @@ export default async function HomePage() {
   ])
 
   // Default content if CMS data not available
-  const heroTitle = homepage?.heroTitle || "SHAPING'S INTO ICONIC CULTURAL LANDMARKS"
+  const heroTitle = homepage?.heroTitle || "SHAPING ICONIC CULTURAL LANDMARKS"
   const heroSubtitle = homepage?.heroSubtitle || "Monumental Artistic Works & Public Installations"
   const heroImage = homepage?.heroImage
     ? urlFor(homepage.heroImage)?.width(1200).height(1500).url() || "/ayodhya-airport-mural-ramayana-epic-monumental-art.jpg"
