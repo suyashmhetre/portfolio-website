@@ -37,7 +37,7 @@ export function NavigationClient({ settings, contactInfo }: NavigationClientProp
       ]
 
   // Contact info from CMS or fallback
-  const email = contactInfo?.email || "design@perfectpixel.co.in"
+  const email = contactInfo?.email || "desgin@perfectpixel.co.in"
   const phone = contactInfo?.phone || "+91 7972823811"
   const location = contactInfo?.address?.split('\n')[0] || "Mumbai,Vadodara,Nashik,Indore"
 

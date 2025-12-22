@@ -213,6 +213,7 @@ export default function ContactForm() {
             className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "type" ? "w-full" : "w-0"}`}
             style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
           />
+          
         </div>
 
         {/* Budget Range */}

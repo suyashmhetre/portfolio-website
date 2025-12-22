@@ -53,8 +53,6 @@ export async function POST(request: NextRequest) {
     // 3. Create a CRM entry
     // 4. Send autoresponder to user
     
-    // For now, we'll just log it (in production, integrate with your email service)
-    console.log("Contact form submission:", validatedData)
     
     // Simulate email sending (replace with actual email service like Resend, SendGrid, etc.)
     if (process.env.NODE_ENV === "production") {
