@@ -7,7 +7,7 @@ const dataset = process.env.SANITY_DATASET || "production"
 const builder = projectId && dataset ? createImageUrlBuilder({ projectId, dataset }) : null
 
 export function urlFor(source: Image | null | undefined) {
-  if (!builder || !source) return null
+  if (!builder || !source) return ""
   return builder.image(source)
 }
 

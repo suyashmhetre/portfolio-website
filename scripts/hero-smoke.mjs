@@ -36,7 +36,7 @@ async function main() {
   await page.screenshot({ path: "hero-smoke.png", fullPage: false })
   await browser.close()
 
-  console.log(JSON.stringify(result, null, 2))
+  console.log(JSON.stringify(result,"", 3))
 }
 
 main().catch((err) => {

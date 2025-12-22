@@ -42,11 +42,9 @@ export default function ContactForm() {
         location: values.location || "India",
         isPublicSpace: true,
         timeline: "flexible",
-        budgetRange: (values.budget as "<10k" | "15k-20k" | "25k-30k" | "35k-40k" | "50k+") || "<50k",
-        budgetConfirmed: false,
         hasArchitect: false,
         hasBuilder: false,
-        projectBrief: values.message || "",
+        projectBrief: values.name || "",
         referralSource: "other" as const,
       }
 
@@ -66,7 +64,7 @@ export default function ContactForm() {
 
       setIsSubmitted(true)
     } catch (err) {
-      console.error("Form submission error:", err)
+      console.error("Form isn't submitted Error:", err)
       setError(err instanceof Error ? err.message : "An error occurred. Please try again.")
     } finally {
       setIsSubmitting(false)
@@ -218,22 +216,16 @@ export default function ContactForm() {
 
         {/* Budget Range */}
         <div className="form-group">
-          <select
+          <input
+            type="text"
             name="budget"
-            value={values.budget || "<50k"}
+            placeholder=" "
+            value={values.budget || ""}
             onChange={(e) => handleChange("budget", e.target.value)}
             onFocus={() => setFocused("budget")}
             onBlur={() => setFocused(null)}
             className="form-input"
-            aria-label="Budget Range"
-          >
-            <option value="select budget">Please select Budget Range...</option>
-            <option value="<10k"> 10k</option>
-            <option value="15k-20k">15k-20k</option>
-            <option value="25k-30k">25k-30k</option>
-            <option value="35k-40k">35k-40k</option>
-            <option value="50k+">More than 50k+</option>
-          </select>
+          />
           <label className={`form-label ${focused === "budget" || values.budget ? "active" : ""}`}>
             Estimated Budget Range...
           </label>
