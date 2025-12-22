@@ -14,11 +14,11 @@ export default function ContactForm() {
 
   const [error, setError] = useState<string | null>(null)
 
- const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setError(null)
-     // Client-side guards to satisfy API schema
+    // Client-side guards to satisfy API schema
     if (!values.type) values.type = "other"
     if (!values.budget) values.budget = "<50k"
     if (!values.location || values.location.trim().length < 3) values.location = "India"
@@ -27,7 +27,7 @@ export default function ContactForm() {
       setIsSubmitting(false)
       return
     }
-    
+
     try {
       // Prepare data for API
       const formData = {
@@ -35,21 +35,21 @@ export default function ContactForm() {
         email: values.email || "",
         phone: values.phone || "",
         company: values.organization || "",
-         projectType: (values.type as "sculpture"|"mural"|"installation"|"memorial"|"other") || "other",
+        projectType: (values.type as "sculpture" | "mural" | "installation" | "memorial" | "other") || "other",
         projectTypeOther:
-          values.type && !["sculpture","mural","installation","memorial","other"].includes(values.type)
+          values.type && !["sculpture", "mural", "installation", "memorial", "other"].includes(values.type)
             ? values.type : undefined,
-       location: values.location || "India",
+        location: values.location || "India",
         isPublicSpace: true,
         timeline: "flexible",
-         budgetRange: (values.budget as "<10k"|"15k-20k"|"25k-30k"|"35k-40k"|"50k+") || "<50k",
+        budgetRange: (values.budget as "<10k" | "15k-20k" | "25k-30k" | "35k-40k" | "50k+") || "<50k",
         budgetConfirmed: false,
         hasArchitect: false,
         hasBuilder: false,
         projectBrief: values.message || "",
         referralSource: "other" as const,
       }
-      
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -57,13 +57,13 @@ export default function ContactForm() {
         },
         body: JSON.stringify(formData),
       })
-      
+
       const data = await response.json()
-      
+
       if (!response.ok) {
         throw new Error(data.message || "Failed to submit form")
       }
-      
+
       setIsSubmitted(true)
     } catch (err) {
       console.error("Form submission error:", err)
@@ -107,179 +107,199 @@ export default function ContactForm() {
   }
 
   return (
-  <div className="contact-form-border">
-    <form onSubmit={handleSubmit} className="space-y-10">
+    <div className="contact-form-border">
+      <form onSubmit={handleSubmit} className="space-y-10">
 
-      {/* Name */}
-      <div className="form-group">
-        <input
-          type="text"
-          name="name"
-          placeholder=" "
-          value={values.name || ""}
-          onChange={(e) => handleChange("name", e.target.value)}
-          onFocus={() => setFocused("name")}
-          onBlur={() => setFocused(null)}
-          className="form-input min-h-[44px] text-base"
-          required
-          autoComplete="name"
-        />
-        <label className={`form-label ${focused === "name" || values.name ? "active" : ""}`}>Enter Your name...</label>
-        <div
-          className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "organization" ? "w-full" : "w-0"}`}
-          style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
-        />
-      </div>
-
-      {/* Email */}
-      <div className="form-group">
-        <input
-          type="email"
-          name="email"
-          placeholder=" "
-          value={values.email || ""}
-          onChange={(e) => handleChange("email", e.target.value)}
-          onFocus={() => setFocused("email")}
-          onBlur={() => setFocused(null)}
-          className="form-input min-h-[44px] text-base"
-          required
-          autoComplete="email"
-          inputMode="email"
-        />
-        <label className={`form-label ${focused === "email" || values.email ? "active" : ""}`}>Enter Your Email Address...</label>
-        <div
-          className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "email" ? "w-full" : "w-0"}`}
-          style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
-        />
-      </div>
-
-      {/* Organization */}
-      <div className="form-group">
-        <input
-          type="text"
-          name="organization"
-          placeholder=" "
-          value={values.organization || ""}
-          onChange={(e) => handleChange("organization", e.target.value)}
-          onFocus={() => setFocused("organization")}
-          onBlur={() => setFocused(null)}
-          className="form-input"
-        />
-        <label className={`form-label ${focused === "organization" || values.organization ? "active" : ""}`}>
-          Enter Organization / Company Name...
-        </label>
-        <div
-          className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "organization" ? "w-full" : "w-0"}`}
-          style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
-        />
-      </div>
-
-      {/* Project Type */}
-      <div className="form-group">
-        <input
-          type="text"
-          name="type"
-          placeholder=" "
-          value={values.type || ""}
-          onChange={(e) => handleChange("type", e.target.value)}
-          onFocus={() => setFocused("type")}
-          onBlur={() => setFocused(null)}
-          className="form-input"
-        />
-        <label className={`form-label ${focused === "type" || values.type ? "active" : ""}`}>
-          Project Type: Airport, Museum, Temple, Public Space...
-        </label>
-        <div
-          className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "type" ? "w-full" : "w-0"}`}
-          style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
-        />
-      </div>
-
-      {/* Budget Range */}
-      <div className="form-group">
-        <select
-          name="budget"
-          value={values.budget || "<50k"}
-          onChange={(e) => handleChange("budget", e.target.value)}
-          onFocus={() => setFocused("budget")}
-          onBlur={() => setFocused(null)}
-          className="form-input"
-          aria-label="Budget Range"
-        >
-          <option value="select budget">Please select Budget Range...</option>
-          <option value="<10k"> 10k</option>
-          <option value="15k-20k">15k-20k</option>
-          <option value="25k-30k">25k-30k</option>
-          <option value="35k-40k">35k-40k</option>
-          <option value="50k+">More than 50k+</option>
-        </select>
-        <label className={`form-label ${focused === "budget" || values.budget ? "active" : ""}`}>
-          Estimated Budget Range...
-        </label>
-        <div className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "budget" ? "w-full" : "w-0"}`}
-             style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }} 
-/>
+        {/* Name */}
+        <div className="form-group">
+          <input
+            type="text"
+            name="name"
+            placeholder=" "
+            value={values.name || ""}
+            onChange={(e) => handleChange("name", e.target.value)}
+            onFocus={() => setFocused("name")}
+            onBlur={() => setFocused(null)}
+            className="form-input min-h-[44px] text-base"
+            required
+            autoComplete="name"
+          />
+          <label className={`form-label ${focused === "name" || values.name ? "active" : ""}`}>Enter Your name...</label>
+          <div
+            className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "organization" ? "w-full" : "w-0"}`}
+            style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
+          />
+        </div>
+      // Add after Organization field in contact-form.tsx
+        {/* Location - REQUIRED by API */}
+        <div className="form-group">
+          <input
+            type="text"
+            name="location"
+            placeholder=" "
+            value={values.location || ""}
+            onChange={(e) => handleChange("location", e.target.value)}
+            onFocus={() => setFocused("location")}
+            onBlur={() => setFocused(null)}
+            className="form-input"
+            required
+          />
+          <label className={`form-label ${focused === "location" || values.location ? "active" : ""}`}>
+            Project Location (City, Country)
+          </label>
+          <div className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "location" ? "w-full" : "w-0"}`}
+            style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }} />
         </div>
 
-      {/* Message */}
-      <div className="form-group">
-        <textarea
-          name="message"
-          rows={4}
-          placeholder=" "
-          value={values.message || ""}
-          onChange={(e) => handleChange("message", e.target.value)}
-          onFocus={() => setFocused("message")}
-          onBlur={() => setFocused(null)}
-          className="form-input resize-none min-h-[120px] text-base"
-          required
-        />
-        <label className={`form-label ${focused === "message" || values.message ? "active" : ""}`}>
-          Tell us about your vision, the space, and what you hope to achieve...
-        </label>
-        <div
-          className={`absolute bottom-1.5 left-0 h-[2px] transition-all duration-300 ${focused === "message" ? "w-full" : "w-0"}`}
-          style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
-        />
-      </div>
-
-      {/* Error message */}
-      {error && (
-        <div className="p-4 bg-red-50 border border-red-200 text-red-800 text-sm">
-          {error}
+        {/* Email */}
+        <div className="form-group">
+          <input
+            type="email"
+            name="email"
+            placeholder=" "
+            value={values.email || ""}
+            onChange={(e) => handleChange("email", e.target.value)}
+            onFocus={() => setFocused("email")}
+            onBlur={() => setFocused(null)}
+            className="form-input min-h-[44px] text-base"
+            required
+            autoComplete="email"
+            inputMode="email"
+          />
+          <label className={`form-label ${focused === "email" || values.email ? "active" : ""}`}>Enter Your Email Address...</label>
+          <div
+            className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "email" ? "w-full" : "w-0"}`}
+            style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
+          />
         </div>
-      )}
 
-      {/* Submit */}
-      <div className="inline-block">
-        <GradientButton
-          type="submit"
-          onClick={() => {}}
-          texture="gold-leaf"
-          className="min-h-[48px] min-w-[220px] text-[0.75rem]"
-          gradient="linear-gradient(135deg, #000000 10%, #c2542d 50%, #b8963f 100%)"
-        >
-          <span className="relative z-10 flex items-center gap-3">
-            {isSubmitting ? (
-              <>
-                <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                  />
-                </svg>
-                Sending Your Inquiry...
-              </>
-            ) : (
-              "Send Commission Inquiry"
-            )}
-          </span>
-        </GradientButton>
-      </div>
-       </form>
-  </div>
-)
+        {/* Organization */}
+        <div className="form-group">
+          <input
+            type="text"
+            name="organization"
+            placeholder=" "
+            value={values.organization || ""}
+            onChange={(e) => handleChange("organization", e.target.value)}
+            onFocus={() => setFocused("organization")}
+            onBlur={() => setFocused(null)}
+            className="form-input"
+          />
+          <label className={`form-label ${focused === "organization" || values.organization ? "active" : ""}`}>
+            Enter Organization / Company Name...
+          </label>
+          <div
+            className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "organization" ? "w-full" : "w-0"}`}
+            style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
+          />
+        </div>
+
+        {/* Project Type */}
+        <div className="form-group">
+          <input
+            type="text"
+            name="type"
+            placeholder=" "
+            value={values.type || ""}
+            onChange={(e) => handleChange("type", e.target.value)}
+            onFocus={() => setFocused("type")}
+            onBlur={() => setFocused(null)}
+            className="form-input"
+          />
+          <label className={`form-label ${focused === "type" || values.type ? "active" : ""}`}>
+            Project Type: Airport, Museum, Temple, Public Space...
+          </label>
+          <div
+            className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "type" ? "w-full" : "w-0"}`}
+            style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
+          />
+        </div>
+
+        {/* Budget Range */}
+        <div className="form-group">
+          <select
+            name="budget"
+            value={values.budget || "<50k"}
+            onChange={(e) => handleChange("budget", e.target.value)}
+            onFocus={() => setFocused("budget")}
+            onBlur={() => setFocused(null)}
+            className="form-input"
+            aria-label="Budget Range"
+          >
+            <option value="select budget">Please select Budget Range...</option>
+            <option value="<10k"> 10k</option>
+            <option value="15k-20k">15k-20k</option>
+            <option value="25k-30k">25k-30k</option>
+            <option value="35k-40k">35k-40k</option>
+            <option value="50k+">More than 50k+</option>
+          </select>
+          <label className={`form-label ${focused === "budget" || values.budget ? "active" : ""}`}>
+            Estimated Budget Range...
+          </label>
+          <div className={`absolute bottom-0 left-0 h-[2px] transition-all duration-300 ${focused === "budget" ? "w-full" : "w-0"}`}
+            style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
+          />
+        </div>
+
+        {/* Message */}
+        <div className="form-group">
+          <textarea
+            name="message"
+            rows={4}
+            placeholder=" "
+            value={values.message || ""}
+            onChange={(e) => handleChange("message", e.target.value)}
+            onFocus={() => setFocused("message")}
+            onBlur={() => setFocused(null)}
+            className="form-input resize-none min-h-[120px] text-base"
+            required
+          />
+          <label className={`form-label ${focused === "message" || values.message ? "active" : ""}`}>
+            Tell us about your vision, the space, and what you hope to achieve...
+          </label>
+          <div
+            className={`absolute bottom-1.5 left-0 h-[2px] transition-all duration-300 ${focused === "message" ? "w-full" : "w-0"}`}
+            style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
+          />
+        </div>
+
+        {/* Error message */}
+        {error && (
+          <div className="p-4 bg-red-50 border border-red-200 text-red-800 text-sm">
+            {error}
+          </div>
+        )}
+
+        {/* Submit */}
+        <div className="inline-block">
+          <GradientButton
+            type="submit"
+            onClick={() => { }}
+            texture="gold-leaf"
+            className="min-h-[48px] min-w-[220px] text-[0.75rem]"
+            gradient="linear-gradient(135deg, #000000 10%, #c2542d 50%, #b8963f 100%)"
+          >
+            <span className="relative z-10 flex items-center gap-3">
+              {isSubmitting ? (
+                <>
+                  <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                    />
+                  </svg>
+                  Sending Your Inquiry...
+                </>
+              ) : (
+                "Send Commission Inquiry"
+              )}
+            </span>
+          </GradientButton>
+        </div>
+      </form>
+    </div>
+  )
 }
 
