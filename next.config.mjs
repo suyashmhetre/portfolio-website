@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    // your existing images config
-  },
+    images: {
+  formats: ['image/webp'],           // Use WebP format
+  deviceSizes: [640, 750, 828, 1080, 1200, 1920],  // Breakpoints
+  imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], // Icon sizes
+  minimumCacheTTL: 60,               // Cache for 60 seconds
+},
   
   // ADD THIS:
   async headers() {
