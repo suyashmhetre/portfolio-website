@@ -1,0 +1,14 @@
+.next
+node_modules
+.env.local
+.vercel
+.turbo
+.DS_Store
+.sanity/runtime
+.next
+node_modules
+.env.local
+.vercel
+.turbo
+.DS_Store
+.sanity/runtime
