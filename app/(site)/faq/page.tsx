@@ -2,7 +2,12 @@ import { draftMode } from "next/headers"
 import { sanityFetch } from "@/sanity/lib/fetch"
 import { faqQuery } from "@/sanity/lib/queries"
 import { PortableTextRenderer } from "@/components/portable-text"
+import type { Metadata } from 'next'
 
+export const metadata: Metadata = {
+  title: 'FAQ - Frequently Asked Questions | Badhuc Art Studio',
+  description: 'Find answers to common questions about commissioning sculptures, project timelines, costs, and our creative process.',
+}
 type FaqItem = { question?: string; answer?: any; category?: string }
 
 export default async function FaqPage() {

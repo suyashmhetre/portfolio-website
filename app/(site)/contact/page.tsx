@@ -8,8 +8,13 @@ import type { ContactInfo } from "@/sanity/lib/types"
 import ContactForm from "./contact-form"
 import { TextureOverlay } from "@/components/texture-overlay"
 import { ScrollWeightText } from "@/components/scroll-weight-text"
+import type { Metadata } from 'next'
 
 
+export const metadata: Metadata = {
+  title: 'Contact Us - Badhuc Art Studio',
+  description: 'Get in touch with Badhuc Art Studio to discuss your sculpture project, commission artwork, or learn about our creative process.',
+}
 export default async function ContactPage() {
   const { isEnabled } = draftMode()
   // Fetch contact info from CMS

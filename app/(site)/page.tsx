@@ -17,7 +17,28 @@ import { sanityFetch } from "@/sanity/lib/fetch"
 import { homepageQuery, featuredProjectsQuery } from "@/sanity/lib/queries"
 import type { Homepage, Project } from "@/sanity/lib/types"
 import { urlFor } from "@/sanity/lib/image"
+import type { Metadata } from 'next'
 
+
+export const metadata: Metadata = {
+  title: 'Badhuc Art Studio - Iconic Cultural Sculptures & Public Art',
+  description: 'Award-winning sculpture studio creating monumental public artworks, cultural landmarks, and commissioned sculptures across India.',
+  openGraph: {
+    title: 'Badhuc Art Studio',
+    description: 'Creating iconic cultural landmarks through sculpture',
+    type: 'website',
+  },
+}
+export default function Loading() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2]">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-12 h-12 border-4 border-[#C2542D] border-t-transparent rounded-full animate-spin" />
+        <p className="oh-label text-[#4a4640]">Loading...</p>
+      </div>
+    </div>
+  )
+}
 export default async function HomePage() {
   const { isEnabled } = draftMode()
   // Fetch homepage data and featured projects from CMS

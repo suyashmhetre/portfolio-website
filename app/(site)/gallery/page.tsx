@@ -3,7 +3,12 @@ import { draftMode } from "next/headers"
 import { sanityFetch } from "@/sanity/lib/fetch"
 import { galleryQuery } from "@/sanity/lib/queries"
 import { urlFor } from "@/sanity/lib/image"
+import type { Metadata } from 'next'
 
+export const metadata: Metadata = {
+  title: 'Gallery - Sculpture Portfolio | Badhuc Art Studio',
+  description: 'Explore our portfolio of monumental sculptures, public artworks, and cultural landmarks created across India.',
+}
 type GalleryItem = {
   title?: string
   category?: string

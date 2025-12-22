@@ -8,11 +8,16 @@ import { sanityFetch } from "@/sanity/lib/fetch"
 import { projectsQuery, projectsByTypeQuery, categoriesQuery } from "@/sanity/lib/queries"
 import { urlFor } from "@/sanity/lib/image"
 import type { Project, Category } from "@/sanity/lib/types"
+import type { Metadata } from 'next'
  
 type Props = {
   searchParams: Promise<{ category?: string }>
 }
 
+export const metadata: Metadata = {
+  title: 'Our Works - Sculpture Projects | Badhuc Art Studio',
+  description: 'Browse our collection of completed sculpture projects including monuments, installations, murals, and memorials.',
+}
 export default async function WorksPage({ searchParams }: Props) {
   const { isEnabled } = draftMode()
   const params = await searchParams
