@@ -29,8 +29,8 @@ export function Preloader() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[200] bg-[#FAF7F2] flex items-center justify-center"
+          transition={{ duration: 0.05 }}
+          className="fixed inset-0 z-[100] bg-[#FAF7F2] flex items-center justify-center"
         >
           <div className="w-full max-w-sm px-10">
             {/* Logo */}

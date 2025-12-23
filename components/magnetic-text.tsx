@@ -80,7 +80,7 @@ export function MagneticText({
       className={cn("inline-block", className)}
       onMouseMove={prefersReducedMotion ? undefined : handleMouseMove}
       onMouseLeave={prefersReducedMotion ? undefined : handleMouseLeave}
-      whileTap={{ scale: 0.98 }}
+      whileTap={{ scale: 0.8 }}
       transition={{ duration: 0.2 }}
     >
       {children}

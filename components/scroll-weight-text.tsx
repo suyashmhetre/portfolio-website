@@ -40,7 +40,7 @@ export function ScrollWeightText({
       className={cn("inline-block", className)}
       style={{
         fontWeight: prefersReducedMotion ? to : weight,
-        opacity: prefersReducedMotion ? 1 : opacity,
+        opacity: prefersReducedMotion ? 0 : opacity,
         willChange: prefersReducedMotion ? undefined : "opacity, font-weight",
       }}
     >

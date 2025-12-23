@@ -33,7 +33,7 @@ export function GradientButton({
   type = "button",
 }: GradientButtonProps) {
   const ref = useRef<HTMLButtonElement | HTMLAnchorElement>(null)
-  const [angle, setAngle] = useState(135)
+  const [angle, setAngle] = useState(13)
   const [glow, setGlow] = useState({ x: "50%", y: "50%" })
   const [bgPos, setBgPos] = useState({ x: "50%", y: "50%" })
 
@@ -69,8 +69,8 @@ export function GradientButton({
 
   const handlePointerLeave = () => {
     setAngle(135)
-    setGlow({ x: "50%", y: "50%" })
-    setBgPos({ x: "50%", y: "50%" })
+    setGlow({ x: "20%", y: "20%" })
+    setBgPos({ x: "20%", y: "20%" })
   }
 
   const sharedProps = {
@@ -81,8 +81,6 @@ export function GradientButton({
     ),
     style: {
       backgroundImage: gradientValue,
-      boxShadow: "0 14px 36px rgba(26,24,21,0.14), 0 8px 24px rgba(26,24,21,0.1)",
-      "--glow-x": glow.x,
       "--glow-y": glow.y,
       "--glow-color": glowColor,
       backgroundSize: "200% 200%",

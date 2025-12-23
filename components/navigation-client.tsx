@@ -31,10 +31,10 @@ export function NavigationClient({ settings, contactInfo }: NavigationClientProp
   const links = settings?.navLinks && settings.navLinks.length > 0
     ? settings.navLinks.map(link => ({ href: link.url, label: link.label }))
     : [
-        { href: "/works", label: "Works" },
-        { href: "/process", label: "Process" },
-        { href: "/contact", label: "Contact" },
-      ]
+      { href: "/works", label: "Works" },
+      { href: "/process", label: "Process" },
+      { href: "/contact", label: "Contact" },
+    ]
 
   // Contact info from CMS or fallback
   const email = contactInfo?.email || "desgin@perfectpixel.co.in"
@@ -43,12 +43,12 @@ export function NavigationClient({ settings, contactInfo }: NavigationClientProp
 
   const menuVariants = {
     closed: {
-      clipPath: "circle(0% at calc(100% - 40px) 40px)",
-      transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] },
+      clipPath: "circle(0% at calc(100% - 60px) 60px)",
+      transition: { duration: 0.5, ease: [0.25, 0, 0.10, 1] },
     },
     open: {
-      clipPath: "circle(150% at calc(100% - 40px) 40px)",
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
+      clipPath: "circle(150% at calc(100% - 60px) 60px)",
+      transition: { duration: 0.7, ease: [0.25, 0, 0.10, 1] },
     },
   }
 
@@ -64,10 +64,12 @@ export function NavigationClient({ settings, contactInfo }: NavigationClientProp
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? "py-4 bg-[#FAF7F2]/90 backdrop-blur-md shadow-[0_1px_0_rgba(26,24,21,0.06)]" : "py-6"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${isScrolled
+          ? "py-2 bg-[#FAF7F2]/100 backdrop-blur-md"
+          : "py-2 bg-white/50 backdrop-blur-sm"
+          }`}
       >
+
         <nav className="flex items-left justify-between max-w-[1500px] mx-auto px-3">
           {/* Logo */}
           <LogoWithTexture title={settings?.siteTitle || "Badhuche"} />
@@ -75,60 +77,60 @@ export function NavigationClient({ settings, contactInfo }: NavigationClientProp
           <div className="flex items-center">
             {/* Desktop links - visible only before scroll */}
             <div
-              className={`hidden md:flex items-center gap-6 transition-all duration-500 ${
-                isScrolled ? "opacity-0 pointer-events-none translate-x-4" : "opacity-100 translate-x-0"
-              }`}
+              className={`hidden md:flex items-center gap-6 transition-all duration-100 ${isScrolled ? "opacity-0 pointer-events-none translate-x-4" : "opacity-100 translate-x-0"
+                }`}
             >
-              {links.map((link) => (
-                <MagneticButton key={link.href} href={link.href}>
-                  <span
-                    className={`text-xs uppercase tracking-[0.1em] transition-all duration-300 link-underline ${
-                      pathname === link.href ? "text-[#1A1815] opacity-100" : "text-[#6B6560] hover:text-[#1A1815]"
-                    }`}
-                  >
-                    {link.label}
-                  </span>
-                </MagneticButton>
-              ))}
+              <GradientButton
+                href="/works"
+                texture="gold-leaf"
+                gradient="linear-gradient(135deg, #1a1815 0%, #c2542d 50%, #b8963f 100%)"
+                className="text-[0.25rem] sm:text-xs ml-0 hidden md:inline-flex"
+              >
+                <span className="tracking-[0.16rem]">Work's</span>
+              </GradientButton>
+              {links
+                .filter((link) => link.href !== "/works") // remove duplicate Work link
+                .map((link) => (
+                  <MagneticButton key={link.href} href={link.href}>
+                    <span
+                      className={`text-xs uppercase tracking-[0.1em] transition-all duration-300 link-underline ${pathname === link.href
+                          ? "text-[#1A1815] opacity-100"
+                          : "text-[#6B6560] hover:text-[#1A1815] hover:text-white opacity-80"
+                        }`}
+                    >
+                      {link.label}
+                    </span>
+                  </MagneticButton>
+                ))}
+
             </div>
 
             <button
-              className={`relative w-12 h-12 sm:w-10 sm:h-10 flex items-center justify-right rounded-full transition-all duration-500 touch-manipulation ${
-                isScrolled || isMenuOpen
-                  ? "md:opacity-100 md:translate-x-0"
-                  : "md:opacity-0 md:pointer-events-none md:-translate-x-4"
-              } ${isMenuOpen ? "bg-[#1A1815]" : "bg-transparent hover:bg-[#1A1815]/5"}`}
+              className={`relative w-12 h-12 sm:w-10 sm:h-10 flex items-center justify-right rounded-full transition-all duration-100 touch-manipulation ${isScrolled || isMenuOpen
+                ? "md:opacity-100 md:translate-x-0"
+                : "md:opacity-0 md:pointer-events-none md:-translate-x-4"
+                } ${isMenuOpen ? "bg-[#1A1815]" : "bg-transparent hover:bg-[#1A1815]/5"}`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
             >
               <div className="relative w-5 h-3 flex flex-col justify-between">
                 <span
-                  className={`block w-full h-[1.5px] transition-all duration-300 origin-center ${
-                    isMenuOpen ? "bg-[#FAF7F2] rotate-45 translate-y-[5.5px]" : "bg-[#1A1815]"
-                  }`}
+                  className={`block w-full h-[1.5px] transition-all duration-300 origin-center ${isMenuOpen ? "bg-[#FAF7F2] rotate-45 translate-y-[5.5px]" : "bg-[#1A1815]"
+                    }`}
                 />
                 <span
-                  className={`block w-full h-[1.5px] transition-all duration-300 ${
-                    isMenuOpen ? "bg-[#FAF7F2] opacity-0" : "bg-[#1A1815] opacity-100"
-                  }`}
+                  className={`block w-full h-[1.5px] transition-all duration-300 ${isMenuOpen ? "bg-[#FAF7F2] opacity-0" : "bg-[#1A1815] opacity-100"
+                    }`}
                 />
                 <span
-                  className={`block w-full h-[1.5px] transition-all duration-300 origin-center ${
-                    isMenuOpen ? "bg-[#FAF7F2] -rotate-45 -translate-y-[5.5px]" : "bg-[#1A1815]"
-                  }`}
+                  className={`block w-full h-[1.5px] transition-all duration-300 origin-center ${isMenuOpen ? "bg-[#FAF7F2] -rotate-45 -translate-y-[5.5px]" : "bg-[#1A1815]"
+                    }`}
                 />
               </div>
             </button>
 
-            <GradientButton
-              href="/contact"
-              texture="gold-leaf"
-              gradient="linear-gradient(135deg, #1a1815 0%, #c2542d 50%, #b8963f 100%)"
-              className="text-[0.25rem] sm:text-xs ml-0 hidden md:inline-flex"
-            >
-              <span className="tracking-[0.16rem]">Commission</span>
-            </GradientButton>
+
           </div>
         </nav>
       </header>
@@ -150,9 +152,8 @@ export function NavigationClient({ settings, contactInfo }: NavigationClientProp
                     <Link
                       href={link.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className={`font-serif text-4xl md:text-6xl transition-all duration-300 hover:text-[#B8963F] group relative ${
-                        pathname === link.href ? "text-[#C2542D]" : "text-[#FAF7F2]"
-                      }`}
+                      className={`font-serif text-4xl md:text-6xl transition-all duration-300 hover:text-[#B8963F] group relative ${pathname === link.href ? "text-[#C2542D]" : "text-[#FAF7F2]"
+                        }`}
                     >
                       <span className="relative inline-block overflow-hidden">
                         <span className="block transition-transform duration-500 group-hover:-translate-y-full">

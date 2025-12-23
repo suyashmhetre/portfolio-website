@@ -29,16 +29,7 @@ export const metadata: Metadata = {
     type: 'website',
   },
 }
-export default function Loading() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2]">
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-12 h-12 border-4 border-[#C2542D] border-t-transparent rounded-full animate-spin" />
-        <p className="oh-label text-[#4a4640]">Loading...</p>
-      </div>
-    </div>
-  )
-}
+
 export default async function HomePage() {
   const { isEnabled } = draftMode()
   // Fetch homepage data and featured projects from CMS
@@ -56,11 +47,10 @@ export default async function HomePage() {
   ])
 
   // Default content if CMS data not available
-  const heroTitle = homepage?.heroTitle || "SHAPING ICONIC CULTURAL LANDMARKS"
   const heroSubtitle = homepage?.heroSubtitle || "Monumental Artistic Works & Public Installations"
   const heroImage = homepage?.heroImage
-    ? urlFor(homepage.heroImage)?.width(1200).height(1500).url() || "/ayodhya-airport-mural-ramayana-epic-monumental-art.jpg"
-    : "/ayodhya-airport-mural-ramayana-epic-monumental-art.jpg"
+    ? urlFor(homepage.heroImage)?.width(1200).height(1500).url() || "/8k.jpeg.png"
+    : "/8k.jpeg.png"
   const stats = homepage?.stats || [
     { _key: "1", value: "50", suffix: "+", label: "Monumental Projects Completed" },
     { _key: "2", value: "4", suffix: "+", label: "Countries Across Globe" },
@@ -72,55 +62,70 @@ export default async function HomePage() {
   const projects = featuredProjects.slice(0, 16).map((project, index) => ({
     title: project.title,
     number: String(index + 1).padStart(2, "0"),
-    image: project.heroImage ? urlFor(project.heroImage)?.width(800).height(1000).url() || "/placeholder.jpg" : "/placeholder.jpg",
+    image: project.heroImage ? urlFor(project.heroImage)?.width(800).height(1000).url() || "/8k.jpeg.png" : "/8k.jpeg.png",
     href: `/works/${project.slug.current}`,
     size: (["large", "medium", "small"][index % 3] as "large" | "medium" | "small"),
     description: project.excerpt || "",
   }))
 
   // Split title into words for animation
-  const titleWords = heroTitle.split(/(?=[A-Z])/)
   return (
     <main className="min-h-screen">
       <ScrollParticles />
       {/* Hero Section - Optimized for Mobile */}
-      <section className="min-h-screen px-4 sm:px-6 md:px-10 pt-32 sm:pt-50 pb-12 sm:pb-20 flex flex-col justify-center">
-        <div className="max-w-[1400px] mx-auto w-full">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5 md:gap-5">
-            {/* Left - Headline */}
-            <div className="flex-1 w-full md:w-full">
-              {titleWords.map((word, i) => (
-                <SplitText
-                  key={i}
-                  text={word}
-                  as="h4"
-                  className="oh-headline text-sm  sm:text-xl md:text-4xl lg:text-5xl xl:text-5xl leading-[0.05]  sm:mb-6 lg:mb-8"
-                />
-              ))}
-              <TextReveal delay={50}>
-                <MagneticText className="oh-label mb-10 sm:mt-10 sm:mb-18 text-3xl sm:text-base" activeColor="#da951eff">
-                  {heroSubtitle}
-                </MagneticText>
-              </TextReveal>
-              <TextReveal delay={350}>
-                <ScrollIndicator />
-              </TextReveal>
+      <section
+        className="relative min-h-screen w-full  overflow-hidden
+             px-4 sm:px-6 md:px-10
+             pt-32 sm:pt-44 pb-12 sm:pb-20
+             flex items-center bg-repeat-space bg-cover bg-[length:100%]"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+        }}
+      >
+        {/* Dark cinematic overlay */}
+        <div className="absolute inset-0 bg-black/55" />
+
+        {/* Texture overlay */}
+        <TextureOverlay
+          texture="paper"
+          opacity={0.12}
+          blendMode="multiply"
+        />
+
+        {/* Content Layer */}
+        <div className="relative z-5 max-w-[1900px] mx-auto w-full">
+          <div className="max-w-[1000px]">
+
+            {/* Heading text of hero section */}
+            <div className="oh-semibold text-sm sm:text-base md:text-4xl max-w-[1200px] mt-10 sm:mt-35 mb-20 sm:mb-35 leading-relaxed">
+              <p className="oh-semibold text-4xl md:text-5xl leading-relaxed">
+                <span className="text-shimmer font-bold text-transparent stroke-text">
+                  SHAPING'S ICONIC CULTURAL LANDMARKS
+                </span>
+              </p>
             </div>
 
-            {/* Right - Featured Image - Full width on mobile, constrained on desktop */}
-            <div className="w-full md:w-[45%] mt-9 md:mt-0 relative overflow-hidden">
-              <TextureOverlay texture="paper" opacity={0.12} blendMode="multiply" />
-              <ImageReveal
-                src={heroImage}
-                alt={homepage?.heroImage?.alt || "Featured artwork"}
-                className="w-full aspect-[4/5] sm:aspect-[3/4] md:aspect-[4/5]"
-                priority
-                direction="bottom"
-              />
-            </div>
+
+            {/* Subtitle */}
+            <TextReveal delay={80}>
+              <MagneticText
+                className="mt-6 text-base sm:text-lg text-white/80"
+                activeColor="#da951e"
+              >
+                {heroSubtitle}
+              </MagneticText>
+            </TextReveal>
+
+            {/* Scroll Indicator */}
+            <TextReveal delay={300}>
+              <div className="mt-14">
+                <ScrollIndicator />
+              </div>
+            </TextReveal>
           </div>
         </div>
       </section>
+
 
       {/* Introduction */}
       <section className="relative px-30 md:px-8 py-2 md:py-5 overflow-hidden">

@@ -21,8 +21,8 @@ export function ScrollIndicator() {
       }`}
     >
       <span className="oh-label">(SCROLL TO EXPLORE)</span>
-      <div className="relative w-px h-12 bg-[#8B8680]/30 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1/2 bg-[#B8963F] animate-scroll-line" />
+      <div className="relative w-px h-20 bg-[#8B8680]/30 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1/3 bg-[#B8963F] animate-scroll-line" />
       </div>
     </div>
   )

@@ -128,7 +128,6 @@ export default function ContactForm() {
             style={{ background: "linear-gradient(90deg, #c2542d, #b8963f)" }}
           />
         </div>
-      // Add after Organization field in contact-form.tsx
         {/* Location - REQUIRED by API */}
         <div className="form-group">
           <input

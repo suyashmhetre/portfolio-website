@@ -86,7 +86,7 @@ export function LogoWithTexture({ title = "Badhuche" }: LogoWithTextureProps) {
         key={pathname}
         initial={{ scale: 0.98, opacity: 0.9 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+        transition={{ duration: 0.6, ease: [0.44, 0, 0.1, 1] }}
         className="relative inline-flex items-center px-1"
         style={{
           filter: `drop-shadow(0 8px 18px ${active.accent}22)`,
@@ -99,10 +99,10 @@ export function LogoWithTexture({ title = "Badhuche" }: LogoWithTextureProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
-            className="relative z-10 font-serif text-4xl md:text-5xl tracking-wide transition-all duration-500 group-hover:tracking-[0.08em]"
+            className="relative z-10 font-serif text-3xl md:text-3xl tracking-wide transition-all duration-500 group-hover:tracking-[0.06em]"
             style={{
               backgroundImage: `url(${TEXTURE_SRC[active.texture]}), ${active.gradient}`,
-              backgroundSize: "cover, 200% 200%",
+              backgroundSize: "cover, 100% 100%",
               backgroundPosition: "center, 0% 50%",
               backgroundBlendMode: "multiply, normal",
               WebkitBackgroundClip: "text",
@@ -115,9 +115,9 @@ export function LogoWithTexture({ title = "Badhuche" }: LogoWithTextureProps) {
         </AnimatePresence>
 
         <motion.span
-          className="relative ml-3 h-2 w-2 rounded-full"
-          style={{ background: active.accent, boxShadow: `0 0 0 0 ${active.accent}55` }}
-          animate={{ scale: [1, 1.15, 1], boxShadow: [`0 0 0 0 ${active.accent}55`, `0 0 0 8px ${active.accent}10`, `0 0 0 0 ${active.accent}55`] }}
+          className="relative ml-2 h-2 w-2 rounded-full"
+          style={{ background: active.accent, boxShadow: `0 0 0 0 ${active.accent}60` }}
+          animate={{ scale: [1, 1.15, 1], boxShadow: [`0 0 0 0 ${active.accent}60`, `0 0 0 8px ${active.accent}10`, `0 0 0 0 ${active.accent}10`] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         />
       </motion.span>

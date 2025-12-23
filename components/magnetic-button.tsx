@@ -12,14 +12,14 @@ interface MagneticButtonProps {
   strength?: number
 }
 
-export function MagneticButton({ children, className = "", href, onClick, strength = 0.35 }: MagneticButtonProps) {
+export function MagneticButton({ children, className = "", href, onClick, strength = 0.12 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [isHovered, setIsHovered] = useState(false)
 
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
-  const springConfig = { damping: 15, stiffness: 150 }
+  const springConfig = { damping: 20, stiffness: 70 }
   const x = useSpring(
     useTransform(mouseX, (v) => v * strength),
     springConfig,
@@ -58,7 +58,7 @@ export function MagneticButton({ children, className = "", href, onClick, streng
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
       whileTap={{ scale: 0.98 }}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: 0.35 }}
     >
       {children}
     </motion.div>
