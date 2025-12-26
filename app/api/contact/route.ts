@@ -56,6 +56,7 @@ export async function POST(request: NextRequest) {
     
     // Simulate email sending (replace with actual email service like Resend, SendGrid, etc.)
     if (process.env.NODE_ENV === "production") {
+      // TODO: Send email here
       // Example: await sendEmail({ to: process.env.CONTACT_EMAIL, subject: "New Commission Inquiry", data: validatedData })
     }
     

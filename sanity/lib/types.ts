@@ -1,7 +1,5 @@
 // TypeScript interfaces for Sanity data structures
 
-import { PortableTextBlock } from "sanity"
-
 export interface SanityImage {
   asset: {
     _id: string
@@ -114,9 +112,9 @@ export interface Project {
   heroImage: SanityImage
   heroVideo?: string
   excerpt?: string
-  overview?: PortableTextBlock[]// Portable Text
-  challenge?: PortableTextBlock[] // Portable Text
-  solution?: PortableTextBlock[] // Portable Text
+  overview?: any // Portable Text
+  challenge?: any // Portable Text
+  solution?: any // Portable Text
   category?: Category
   services?: string[]
   materials?: string[]
