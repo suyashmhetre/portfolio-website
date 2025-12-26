@@ -69,10 +69,10 @@ export default async function WorksPage({ searchParams }: Props) {
         <TextureOverlay texture="paper" opacity={0.12} blendMode="multiply" />
         <div className="max-w-[1400px] mx-auto relative z-10">
           <TextReveal>
-            <h1 className="oh-headline text-4xl sm:text-5xl md:text-6xl lg:text-6xl mb-8 sm:mb-8">Our Works</h1>
+            <h1 className="oh-headline text-4xl sm:text-5xl md:text-6xl lg:text-6xl mb-10 sm:mb-10">Our Works</h1>
           </TextReveal>
           <TextReveal delay={50}>
-            <p className="oh-body text-sm sm:text-base md:text-lg max-w-[580px] mb-8 sm:mb-10 leading-relaxed">
+            <p className="oh-body text-sm sm:text-base md:text-lg max-w-[650px] mb-8 sm:mb-10 leading-relaxed">
               A curated selection of our monumental installations and public artworks. Each commission blends cultural
               research, material mastery, and architectural integration.
             </p>

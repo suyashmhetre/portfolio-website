@@ -99,10 +99,10 @@ export default async function ProcessPage() {
         <TextureOverlay texture="paper" opacity={0.14} blendMode="multiply" />
         <div className="max-w-[1400px] mx-auto relative z-10">
           <TextReveal>
-            <span className="oh-label block mb-4 gradient-terracotta">(Our Process)</span>
+            <span className="oh-label block mb-10 gradient-terracotta">(Our Process)</span>
           </TextReveal>
           <TextReveal delay={100}>
-            <ScrollWeightText className="oh-headline text-4xl md:text-6xl lg:text-5xl max-w-[900px]">
+            <ScrollWeightText className="oh-headline text-4xl md:text-6xl lg:text-5xl max-w-[1000px]">
               From vision to monument: a journey of craft, collaboration, and cultural storytelling.
             </ScrollWeightText>
           </TextReveal>

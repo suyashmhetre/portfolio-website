@@ -71,10 +71,10 @@ export function Footer({ settings, contactInfo }: FooterProps) {
       {/* Overlay for legibility */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#1A1815]/75 via-[#1A1815]/55 to-[#1A1815]/35" />
 
-      <div className="relative z-10 px-6 md:px-10 pb-12 pt-24">
+      <div className="relative z-5 px-6 md:px-5 py-5 sm:py-5">
         <div className="max-w-[1400px] mx-auto">
           {/* The only divider on the entire site */}
-          <div className="w-full h-px bg-[rgba(250,247,242,0.16)] mb-10" />
+          <div className="w-full h-px bg-[rgba(212, 205, 79, 0.16)] mb-10" />
         </div>
 
         <div className="max-w-[1400px] mx-auto">

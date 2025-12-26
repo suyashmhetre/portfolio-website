@@ -55,9 +55,9 @@ const textureByPath: Array<{ test: (path: string) => boolean; config: TextureCon
 ]
 
 const TEXTURE_SRC: Record<TextureConfig["texture"], string> = {
-  bronze: "/textures/bronze-metal.webp",
-  stone: "/textures/stone-concrete.jpg",
-  "weathered-metal": "/textures/weathered-metal.webp",
+  bronze: "",
+  stone: "",
+  "weathered-metal": "",
   "gold-leaf": "/textures/gold-leaf.webp",
   marble: "/textures/marble-white.webp",
 }

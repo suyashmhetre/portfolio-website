@@ -52,7 +52,7 @@ export function ProcessSection() {
     <section ref={sectionRef} className="px-6 md:px-10 py-32 bg-[#F5F0E8]">
       <div className="max-w-[1400px] mx-auto">
         {/* Section header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-20">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-20">
           <div>
             <TextReveal>
               <span className="oh-label block mb-4">(Our Process)</span>
@@ -79,7 +79,7 @@ export function ProcessSection() {
               <motion.div
                 key={step.number}
                 className={`cursor-pointer group transition-all duration-500 ${
-                  activeStep === index ? "opacity-100" : "opacity-40 hover:opacity-70"
+                  activeStep === index ? "opacity-100" : "opacity-90 hover:opacity-70"
                 }`}
                 onClick={() => setActiveStep(index)}
                 whileHover={{ x: 10 }}
@@ -87,7 +87,7 @@ export function ProcessSection() {
                 <div className="flex items-start gap-6">
                   <span
                     className={`font-mono text-sm transition-colors duration-300 ${
-                      activeStep === index ? "text-[#C2542D]" : "text-[#8B8680]"
+                      activeStep === index ? "text-[#FFA500]" : "text-[#CFCAC4]"
                     }`}
                   >
                     {step.number}

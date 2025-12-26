@@ -46,7 +46,7 @@ export function WorksFilters({ categories }: WorksFiltersProps) {
         gradient={!currentCategory ? "var(--gradient-sunset)" : "linear-gradient(135deg, rgba(26,24,21,0.08), rgba(26,24,21,0.18))"}
         className={`!px-4 !py-2 min-h-[44px] text-[0.72rem] sm:text-xs ${currentCategory ? "text-[#1A1815]" : ""}`}
       >
-        <span className="tracking-[0.14em]">All Works</span>
+        <span className="tracking-[0.20em]">All Works</span>
       </GradientButton>
       {categories.map((category) => {
         const isActive = currentCategory === category.slug.current
@@ -58,7 +58,7 @@ export function WorksFilters({ categories }: WorksFiltersProps) {
               gradient={
                 isActive ? "linear-gradient(135deg, #1A1815 0%, #c2542d 50%, #b8963f 100%)" : "linear-gradient(135deg, rgba(26,24,21,0.06), rgba(26,24,21,0.14))"
               }
-              className={`!px-4 !py-2 min-h-[44px] text-[0.72rem] sm:text-xs ${isActive ? "" : "text-[#1A1815]"}`}
+              className={`!px-2 !py-2 min-h-[44px] text-[0.80rem] sm:text-xs ${isActive ? "" : "text-[#1A1815]"}`}
               glowColor={isActive ? "rgba(194,84,45,0.45)" : "rgba(26,24,21,0.15)"}
             >
               <span className="tracking-[0.14em]">{category.title}</span>

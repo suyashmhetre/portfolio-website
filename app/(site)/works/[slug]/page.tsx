@@ -148,36 +148,6 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         </section>
       ) : null}
 
-      {related.length ? (
-        <section className="px-6 md:px-10 pb-24">
-          <div className="max-w-[1400px] mx-auto">
-            <div className="flex items-center justify-between mb-6">
-              <p className="oh-label">(Related Projects)</p>
-              <Link href="/works" className="oh-label link-underline">
-                View all
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {related.map((item, idx) => {
-                const imgUrl = urlFor(item.heroImage)?.width(800).height(900).url()
-                return (
-                  <Link
-                    key={item.slug?.current || idx}
-                    href={item.slug?.current ? `/works/${item.slug.current}` : "#"}
-                    className="group block"
-                  >
-                    <div className="relative w-full aspect-[3/4] overflow-hidden mb-3">
-                      {imgUrl && <Image src={imgUrl} alt={item.title} fill className="object-cover" />}
-                    </div>
-                    <h3 className="oh-headline text-xl">{item.title}</h3>
-                  </Link>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-      ) : null}
-
     </main>
   )
 }

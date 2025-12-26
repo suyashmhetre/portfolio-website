@@ -76,7 +76,7 @@ export default async function HomePage() {
       <section
         className="relative min-h-screen w-full  overflow-hidden
              px-4 sm:px-6 md:px-10
-             pt-32 sm:pt-44 pb-12 sm:pb-20
+             pt-32 sm:pt-44 pb-22 sm:pb-22
              flex items-center bg-repeat-space bg-cover bg-[length:100%]"
         style={{
           backgroundImage: `url(${heroImage})`,
@@ -99,7 +99,7 @@ export default async function HomePage() {
             {/* Heading text of hero section */}
             <div className="oh-semibold text-sm sm:text-base md:text-4xl max-w-[1200px] mt-10 sm:mt-35 mb-20 sm:mb-35 leading-relaxed">
               <p className="oh-semibold text-4xl md:text-5xl leading-relaxed">
-                <span className="text-shimmer font-bold text-transparent stroke-text">
+                <span className="text-shimmer font-bold stroke-text">
                   SHAPING'S ICONIC CULTURAL LANDMARKS
                 </span>
               </p>
@@ -128,21 +128,23 @@ export default async function HomePage() {
 
 
       {/* Introduction */}
-      <section className="relative px-30 md:px-8 py-2 md:py-5 overflow-hidden">
+      <section className="relative  md:px-8 min-h-[95vh] flex items-center overflow-hidden">
         <TextureOverlay texture="paper" blendMode="multiply" />
-        <div className="max-w-[1300px] mx-auto text-center relative z-10">
-          <ScrollWeightText className="oh-body text-sm sm:text-base md:text-3xl max-w-[1000px] mt-20 sm:mt-35 mb-20 sm:mb-35 leading-relaxed">
+        <div className="max-w-[1300px] mx-auto text-center relative z-10 w-full">
+          <ScrollWeightText className="oh-body text-sm sm:text-base md:text-3xl max-w-[1000px] mx-auto leading-relaxed">
             <TextReveal delay={50}>
               <p className="oh-semibold text-xl md:text-3xl leading-relaxed">
                 We are a collective of master{" "}
                 <span className="gradient-terracotta font-semibold">artisans, sculptors, and visionary designers </span>
-                creating large-scale public art that celebrates {" "}
-                <span className="gradient-gold font-semibold">heritage, inspires communities,</span> and defines <span className="text-shimmer font-bold">architectural spaces for generations.</span>
+                creating large-scale public art that celebrates{" "}
+                <span className="gradient-gold font-semibold">heritage, inspires communities,</span> and defines{" "}
+                <span className="text-shimmer font-bold">architectural spaces for generations.</span>
               </p>
             </TextReveal>
           </ScrollWeightText>
         </div>
       </section>
+
 
       {/* Stats Section */}
       {stats.length > 0 && (
