@@ -10,7 +10,7 @@ export async function GET(request: Request) {
 
   // Check the secret
   if (secret !== process.env.SANITY_PREVIEW_SECRET) {
-    return new Response("Invalid token", { status: 401 })
+    return new Response("Unauthorized", { status: 401 })
   }
 
   // Verify the document exists

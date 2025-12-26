@@ -19,7 +19,7 @@ export default function ContactForm() {
     setIsSubmitting(true)
     setError(null)
     // Client-side guards to satisfy API schema
-    if (!values.type) values.type = "other"
+    if (!values.type) values.type = "More than 50k"
     if (!values.budget) values.budget = "<50k"
     if (!values.location || values.location.trim().length < 3) values.location = "India"
     if (!values.message || values.message.trim().length < 50) {
