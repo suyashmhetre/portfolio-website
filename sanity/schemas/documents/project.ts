@@ -1,3 +1,5 @@
+import { Rule } from "sanity"
+
 const project = {
   name: "project",
   title: "Project",
@@ -15,7 +17,7 @@ const project = {
       type: "slug",
       group: "meta",
       options: { source: "title", maxLength: 96 },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: "category",
