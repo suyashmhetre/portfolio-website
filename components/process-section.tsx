@@ -8,7 +8,7 @@ import { TextReveal } from "./text-reveal"
 const processSteps = [
   {
     number: "01",
-    title: "Discovery & Research",
+    title: "Design & Research",
     description:
       "We begin every project by immersing ourselves in the cultural context, architectural environment, and human stories that will shape our work. This deep research phase includes site visits, historical analysis, and community engagement.",
     image: "/art-studio-workshop-sculptors-working-monumental-a.jpg",
@@ -74,7 +74,7 @@ export function ProcessSection() {
         {/* Process steps - horizontal scroll on mobile, grid on desktop */}
         <div className="grid md:grid-cols-2 gap-16">
           {/* Left - Step navigation */}
-          <div className="space-y-8">
+          <div className="space-y-9">
             {processSteps.map((step, index) => (
               <motion.div
                 key={step.number}
@@ -136,7 +136,7 @@ export function ProcessSection() {
           </div>
 
           {/* Right - Step image */}
-          <div className="relative aspect-[4/5] overflow-hidden">
+          <div className="relative aspect-[4/3.5] overflow-hidden">
             {processSteps.map((step, index) => (
               <motion.div
                 key={step.number}
