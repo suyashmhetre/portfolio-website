@@ -49,8 +49,8 @@ export default async function HomePage() {
   // Default content if CMS data not available
   const heroSubtitle = homepage?.heroSubtitle || "Monumental Artistic Works & Public Installations"
   const heroImage = homepage?.heroImage
-    ? urlFor(homepage.heroImage)?.width(1200).height(1500).url() || "/8k.jpeg.png"
-    : "/8k.jpeg.png"
+    ? urlFor(homepage.heroImage)?.width(1200).height(1500).url() || "/ayodhya.jpg"
+    : "/ayodhya.jpg"
   const stats = homepage?.stats || [
     { _key: "1", value: "50", suffix: "+", label: "Monumental Projects Completed" },
     { _key: "2", value: "4", suffix: "+", label: "Countries Across Globe" },
@@ -62,7 +62,7 @@ export default async function HomePage() {
   const projects = featuredProjects.slice(0, 16).map((project, index) => ({
     title: project.title,
     number: String(index + 1).padStart(2, "0"),
-    image: project.heroImage ? urlFor(project.heroImage)?.width(800).height(1000).url() || "/8k.jpeg.png" : "/8k.jpeg.png",
+    image: project.heroImage ? urlFor(project.heroImage)?.width(800).height(900).url() || "/ayodhya.jpg" : "/ayodhya.jpg",
     href: `/works/${project.slug.current}`,
     size: (["large", "medium", "small"][index % 3] as "large" | "medium" | "small"),
     description: project.excerpt || "",
@@ -76,8 +76,8 @@ export default async function HomePage() {
       <section
         className="relative min-h-screen w-full  overflow-hidden
              px-4 sm:px-6 md:px-10
-             pt-32 sm:pt-44 pb-22 sm:pb-22
-             flex items-center bg-repeat-space bg-cover bg-[length:100%]"
+             pt-35 sm:pt-40 pb-22 sm:pb-22
+             flex items-center bg-repeat-space bg-top bg-[length:100%]"
         style={{
           backgroundImage: `url(${heroImage})`,
         }}
@@ -93,15 +93,16 @@ export default async function HomePage() {
         />
 
         {/* Content Layer */}
-        <div className="relative z-5 max-w-[1900px] mx-auto w-full">
+        <div className="relative z-5 max-w-[1500px] mx-auto w-full">
           <div className="max-w-[1000px]">
 
             {/* Heading text of hero section */}
             <div className="oh-semibold text-sm sm:text-base md:text-4xl max-w-[1200px] mt-10 sm:mt-35 mb-20 sm:mb-35 leading-relaxed">
               <p className="oh-semibold text-4xl md:text-5xl leading-relaxed">
-                <span className="text-shimmer font-bold stroke-text">
+                <span className="font-bold stroke-text text-[#FFD700] text-5xl md:text-6xl lg:text-7xl">
                   SHAPING'S ICONIC CULTURAL LANDMARKS
                 </span>
+
               </p>
             </div>
 
