@@ -20,7 +20,7 @@ function AnimatedNumber({ value, suffix = "" }: { value: string; suffix?: string
       ([entry]) => {
         if (entry.isIntersecting) {
           const start = 0
-          const duration = 2500
+          const duration = 3000
           const startTime = performance.now()
 
           const animate = (currentTime: number) => {
@@ -64,15 +64,15 @@ export function StatsCounter({ stats }: { stats: StatProps[] }) {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+          transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
         >
-          <TextureOverlay texture="bronze" opacity={0.08} blendMode="multiply" />
-          <TextureOverlay texture="canvas" opacity={0.05} blendMode="soft-light" />
+          <TextureOverlay texture="bronze" opacity={0.12} blendMode="multiply" />
+          <TextureOverlay texture="canvas" opacity={0.20} blendMode="soft-light" />
           <div
             aria-hidden
             className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-500"
             style={{
-              background: "radial-gradient(circle at 50% 50%, rgba(184,150,63,0.24), transparent 60%)",
+              background: "radial-gradient(circle at 50% 50%, rgba(184,150,63,0.24), transparent 100%)",
             }}
           />
           <AnimatedNumber value={stat.value} suffix={stat.suffix} />
