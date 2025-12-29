@@ -267,12 +267,12 @@
     filter: brightness(1.05);
   }
 
-  /* Updated label style - darker for better visibility on ivory */
+
   .oh-label {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #4a4640;
+    color: #fffefd;
     font-family: var(--font-sans);
   }
 
@@ -669,5 +669,21 @@
 
  .stroke-text {
   -webkit-text-stroke: 3px rgba(0,0,0,0.25);  
+}
+ .text-shimmar {
+  color: #BFA27A; 
+  background: linear-gradient(
+    90deg,
+    #746e66 25%,
+    #a5a299 45%,
+    #9d9d9c 50%,
+    #868686 55%,
+    #1f1f1f 85%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 22s ease-in-out infinite;
 }
 

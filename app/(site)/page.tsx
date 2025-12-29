@@ -93,14 +93,18 @@ export default async function HomePage() {
         />
 
         {/* Content Layer */}
+        <div className="h-24 sm:h-36 lg:h-44" />
         <div className="relative z-5 max-w-[1500px] mx-auto w-full">
           <div className="max-w-[1000px]">
 
             {/* Heading text of hero section */}
-            <div className="oh-semibold text-sm sm:text-base md:text-4xl max-w-[1200px] mt-10 sm:mt-35 mb-20 sm:mb-35 leading-relaxed">
+            <div className="oh-semibold text-sm sm:text-base md:text-4xl max-w-[1200px] mt-10 sm:mt-35 mb-5 sm:mb-5 leading-relaxed">
               <p className="oh-semibold text-4xl md:text-5xl leading-relaxed">
-                <MagneticText className="font-bold stroke-text text-[#b88c65ff] text-4xl md:text-5xl lg:text-6xl" activeColor="#c37939ff">
-                  SHAPING'S ICONIC <br/>CULTURAL LANDMARKS
+                <MagneticText
+                  className="mt-20 text-base sm:text-lg text-white/80"
+                  activeColor="#da951e"
+                >
+                  {heroSubtitle}
                 </MagneticText>
 
               </p>
@@ -109,12 +113,10 @@ export default async function HomePage() {
 
             {/* Subtitle */}
             <TextReveal delay={80}>
-              <MagneticText
-                className="mt-6 text-base sm:text-lg text-white/80"
-                activeColor="#da951e"
-              >
-                {heroSubtitle}
-              </MagneticText>
+              <span className="text-shimmar stroke-text mt-20 sm:mt-10 text-4xl md:text-5xl lg:text-6xl">
+                SHAPING'S ICONIC <br /> CULTURAL LANDMARKS
+              </span>
+
             </TextReveal>
 
             {/* Scroll Indicator */}

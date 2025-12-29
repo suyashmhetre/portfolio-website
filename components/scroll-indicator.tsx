@@ -16,13 +16,14 @@ export function ScrollIndicator() {
 
   return (
     <div
-      className={`flex flex-col items-start gap-3 transition-all duration-500 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      }`}
+      className={`flex flex-col items-start gap-3 transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}
     >
-      <span className="oh-label">(SCROLL TO EXPLORE)</span>
+      <span className="oh-label text-[#B88C65] hover:text-[#DA951E] transition-colors">
+        (SCROLL TO EXPLORE)
+      </span>
       <div className="relative w-px h-20 bg-[#8B8680]/30 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1/3 bg-[#B8963F] animate-scroll-line" />
+        <div className="absolute top-0 left-0 w-full h-2/3 bg-[#B8963F] animate-scroll-line" />
       </div>
     </div>
   )
