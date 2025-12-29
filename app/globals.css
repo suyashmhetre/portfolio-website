@@ -268,13 +268,14 @@
   }
 
 
-  .oh-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #fffefd;
-    font-family: var(--font-sans);
-  }
+ .oh-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #6f6a64; /* 👈 visible on light & dark */
+  font-family: var(--font-sans);
+}
+
 
   /* Updated headline - ensure charcoal is visible */
   .oh-headline {
@@ -686,4 +687,5 @@
   -webkit-text-fill-color: transparent;
   animation: shimmer 22s ease-in-out infinite;
 }
+
 

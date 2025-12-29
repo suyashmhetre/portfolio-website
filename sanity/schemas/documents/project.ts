@@ -10,7 +10,14 @@ const project = {
     { name: "meta", title: "Metadata" },
   ],
   fields: [
-    { name: "title", title: "Title", type: "string", group: "content", validation: (Rule: any) => Rule.required() },
+    {
+      name: "title",
+      title: "Title",
+      type: "string",
+      group: "content",
+      validation: (Rule: Rule) => Rule.required(),
+      initialValue: "",
+    },
     {
       name: "slug",
       title: "Slug",
@@ -26,7 +33,13 @@ const project = {
       to: [{ type: "category" }],
       group: "meta",
     },
-    { name: "featured", title: "Featured", type: "boolean", group: "meta", initialValue: false },
+    {
+      name: "featured",
+      title: "Featured",
+      type: "boolean",
+      group: "meta",
+      initialValue: false,
+    },
     { name: "order", title: "Display Order", type: "number", group: "meta" },
     { name: "client", title: "Client", type: "string", group: "content" },
     { name: "location", title: "Location", type: "string", group: "content" },
@@ -50,7 +63,7 @@ const project = {
       title: "Hero Image",
       type: "imageWithAlt",
       group: "media",
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     { name: "heroVideo", title: "Hero Video URL", type: "url", group: "media" },
     {
@@ -60,12 +73,7 @@ const project = {
       of: [{ type: "imageWithAlt" }],
       group: "media",
     },
-    {
-      name: "coverVideo",
-      title: "Cover Video",
-      type: "url",
-      group: "media",
-    },
+    { name: "coverVideo", title: "Cover Video", type: "url", group: "media" },
     { name: "excerpt", title: "Short Description", type: "text", rows: 3, group: "content" },
     { name: "overview", title: "Project Overview", type: "blockContent", group: "content" },
     { name: "challenge", title: "The Challenge", type: "blockContent", group: "content" },
@@ -85,7 +93,7 @@ const project = {
         {
           type: "object",
           fields: [
-            { name: "name", title: "Name", type: "string", validation: (Rule: any) => Rule.required() },
+            { name: "name", title: "Name", type: "string", validation: (Rule: Rule) => Rule.required() },
             { name: "role", title: "Role", type: "string" },
             { name: "organization", title: "Organization", type: "string" },
           ],
@@ -116,6 +124,3 @@ const project = {
 }
 
 export default project
-
-
-

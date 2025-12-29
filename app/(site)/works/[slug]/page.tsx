@@ -14,9 +14,9 @@ type Project = {
   heroVideo?: string
   gallery?: any[]
   excerpt?: string
-  overview?: any
-  challenge?: any
-  solution?: any
+  overview?: any[]
+  challenge?: any[]
+  solution?: any[]
   location?: string
   year?: number
   materials?: string[]
@@ -53,11 +53,10 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 
   return (
     <main className="min-h-screen bg-[#FAF7F2] text-[#1A1815]">
-
       <section className="pt-28 pb-16 px-5 md:px-4">
         <div className="max-w-[1200px] mx-auto">
           <p className="oh-label mb-4">(Project)</p>
-          <h1 className="oh-headline text-4xl md:text-5xl lg:text-6xl mb-4">{project.title}</h1>
+          <h1 className=" text-4xl md:text-5xl lg:text-6xl mb-4">{project.title}</h1>
           <p className="oh-body text-lg max-w-3xl">{project.excerpt}</p>
           <div className="mt-6 flex flex-wrap gap-6 text-sm text-[#4a4640]">
             {project.location && <span>Location: {project.location}</span>}

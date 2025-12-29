@@ -1,7 +1,11 @@
+import { read } from "fs"
+
 const studioPage = {
   name: "studioPage",
   title: "Studio Page",
   type: "document",
+  readOnly: false,
+  hidden: false,
   fields: [
     { name: "intro", title: "Intro", type: "blockContent" },
     { name: "capabilities", title: "Capabilities/Services", type: "array", of: [{ type: "string" }] },
