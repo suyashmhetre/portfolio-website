@@ -99,9 +99,9 @@ export default async function HomePage() {
             {/* Heading text of hero section */}
             <div className="oh-semibold text-sm sm:text-base md:text-4xl max-w-[1200px] mt-10 sm:mt-35 mb-20 sm:mb-35 leading-relaxed">
               <p className="oh-semibold text-4xl md:text-5xl leading-relaxed">
-                <span className="font-bold stroke-text text-[#FFD700] text-5xl md:text-6xl lg:text-7xl">
-                  SHAPING'S ICONIC CULTURAL LANDMARKS
-                </span>
+                <MagneticText className="font-bold stroke-text text-[#b88c65ff] text-4xl md:text-5xl lg:text-6xl" activeColor="#c37939ff">
+                  SHAPING'S ICONIC <br/>CULTURAL LANDMARKS
+                </MagneticText>
 
               </p>
             </div>
