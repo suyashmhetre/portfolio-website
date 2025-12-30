@@ -4,7 +4,7 @@
   "private": true,
   "description": "Premium art studio website for Badhuche - monumental sculptures and murals",
   "scripts": {
-    "build": "npm install --legacy-peer-deps && next build",
+    "build": "next build",
     "dev": "next dev",
     "lint": "eslint . --ext .ts,.tsx",
     "start": "next start",
