@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description: 'Browse our collection of completed sculpture projects including monuments, installations, murals, and memorials.',
 }
 export default async function WorksPage({ searchParams }: Props) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   const params = await searchParams
   const categorySlug = params.category
   

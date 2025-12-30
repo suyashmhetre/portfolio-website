@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 }
 
 export default async function HomePage() {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   // Fetch homepage data and featured projects from CMS
   const [homepage, featuredProjects] = await Promise.all([
     sanityFetch<Homepage>({

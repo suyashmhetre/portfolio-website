@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: 'Get in touch with Badhuc Art Studio to discuss your sculpture project, commission artwork, or learn about our creative process.',
 }
 export default async function ContactPage() {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   // Fetch contact info from CMS
   const contactInfo = await sanityFetch<ContactInfo>({
     query: contactInfoQuery,

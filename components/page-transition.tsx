@@ -18,16 +18,20 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div
-        className={`fixed inset-0 z-[9998] bg-[#C2542D] origin-bottom transition-transform duration-[800ms] ease-[cubic-bezier(0.76,0,0.24,1)] ${
-          isTransitioning ? "translate-y-0" : "translate-y-full"
-        }`}
-        style={{ transitionDelay: "0ms" }}
+        className="fixed inset-0 z-[9998] bg-[#C2542D] origin-bottom"
+        style={{
+          transition: `transform 800ms cubic-bezier(0.76, 0, 0.24, 1)`,
+          transform: isTransitioning ? "translateY(0)" : "translateY(100%)",
+          transitionDelay: "0ms",
+        }}
       />
       <div
-        className={`fixed inset-0 z-[9997] bg-[#B8963F] origin-bottom transition-transform duration-[800ms] ease-[cubic-bezier(0.76,0,0.24,1)] ${
-          isTransitioning ? "translate-y-0" : "translate-y-full"
-        }`}
-        style={{ transitionDelay: "100ms" }}
+        className="fixed inset-0 z-[9997] bg-[#B8963F] origin-bottom"
+        style={{
+          transition: `transform 800ms cubic-bezier(0.76, 0, 0.24, 1)`,
+          transform: isTransitioning ? "translateY(0)" : "translateY(100%)",
+          transitionDelay: "100ms",
+        }}
       />
       <div
         className={`fixed inset-0 z-[9996] bg-[#1A1815] origin-bottom transition-transform duration-[800ms] ease-[cubic-bezier(0.76,0,0.24,1)] ${

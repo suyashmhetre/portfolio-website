@@ -42,9 +42,10 @@ async function getRelated(currentSlug: string | undefined, preview: boolean) {
   return featured.filter((p) => p.slug?.current !== currentSlug).slice(0, 3)
 }
 
-export default async function ProjectPage({ params }: { params: { slug: string } }) {
-  const { isEnabled } = draftMode()
-  const project = await getProject(params.slug, isEnabled)
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const { isEnabled } = await draftMode()
+  const project = await getProject(slug, isEnabled)
   if (!project) return notFound()
 
   const related = await getRelated(project.slug?.current, isEnabled)

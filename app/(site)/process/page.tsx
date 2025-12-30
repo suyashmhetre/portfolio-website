@@ -10,7 +10,7 @@ import { ScrollWeightText } from "@/components/scroll-weight-text"
 import type { ProcessStep } from "@/sanity/lib/types"
 
 export default async function ProcessPage() {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   // Fetch process steps from CMS
   const processSteps = await sanityFetch<ProcessStep[]>({
     query: processStepsQuery,

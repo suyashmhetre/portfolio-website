@@ -1,7 +1,7 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -687,5 +687,3 @@
   -webkit-text-fill-color: transparent;
   animation: shimmer 22s ease-in-out infinite;
 }
-
-
