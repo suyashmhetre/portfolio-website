@@ -18,11 +18,11 @@ type Project = {
   challenge?: any[]
   solution?: any[]
   location?: string
-  year?: number
+  year?: string
   materials?: string[]
   services?: string[]
-  credits?: { name?:  string; role?: string; organization?: string }[]
-  awards?: { title?:  string; year?: number; organization?: string; link?: string }[]
+  credits?: { name?: string; role?: string; organization?: string }[]
+  awards?: { title?: string; year?: number; organization?: string; link?: string }[]
 }
 async function getProject(slug: string, preview: boolean) {
   return sanityFetch<Project | null>({
@@ -68,32 +68,21 @@ export default async function ProjectPage({ params }: { params: { slug: string }
       </section>
       {heroUrl && (
         <section className="px-6 md:px-10 pb-16">
-          <div className="max-w-[1400px] mx-auto aspect-[16/9] relative overflow-hidden">
-            <Image src={heroUrl} alt={project.title} fill className="object-cover" priority />
+          <div className="max-w-full mx-auto relative">
+            <Image
+              src={heroUrl}
+              alt={project.title}
+              width={1600}
+              height={600}
+              className="w-full h-auto object-contain"
+              priority
+            />
           </div>
         </section>
+
       )}
       <section className="px-6 md:px-10 pb-20">
         <div className="max-w-[1000px] mx-auto space-y-10">
-          {project.overview && (
-            <div>
-              <p className="oh-label mb-2">(Overview)</p>
-              <PortableTextRenderer value={project.overview} />
-            </div>
-          )}
-          {project.challenge && (
-            <div>
-              <p className="oh-label mb-2">(Challenge)</p>
-              <PortableTextRenderer value={project.challenge} />
-            </div>
-          )}
-          {project.solution && (
-            <div>
-              <p className="oh-label mb-2">(Solution)</p>
-              <PortableTextRenderer value={project.solution} />
-            </div>
-          )}
-
           {project.credits?.length ? (
             <div>
               <p className="oh-label mb-3">(Credits)</p>

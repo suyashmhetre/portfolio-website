@@ -120,8 +120,8 @@ export interface Project {
   materials?: string[]
   dimensions?: string
   weight?: string
-  year: string
-  location: string
+  year?: string
+  location?: string
   timeline?: TimelineItem[]
   gallery?: SanityImage[]
   coverVideo?: string

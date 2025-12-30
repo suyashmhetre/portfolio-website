@@ -17,4 +17,9 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
   ],
+  document: {
+    // Prevent accidental unpublishing of documents
+    actions: (input) =>
+      input.filter(({ action }) => action !== 'unpublish'),
+  },
 })

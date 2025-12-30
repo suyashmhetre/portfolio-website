@@ -15,16 +15,22 @@ const project = {
       title: "Title",
       type: "string",
       group: "content",
-      validation: (Rule: Rule) => Rule.required(),
-      initialValue: "",
     },
     {
       name: "slug",
       title: "Slug",
       type: "slug",
       group: "meta",
-      options: { source: "title", maxLength: 96 },
-      validation: (Rule: Rule) => Rule.required(),
+      options: { 
+        source: "title", 
+        maxLength: 96,
+        slugify: (input: string) =>
+          input
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, '-')
+            .replace(/[^\w-]/g, '')
+      },
     },
     {
       name: "category",
@@ -43,7 +49,13 @@ const project = {
     { name: "order", title: "Display Order", type: "number", group: "meta" },
     { name: "client", title: "Client", type: "string", group: "content" },
     { name: "location", title: "Location", type: "string", group: "content" },
-    { name: "year", title: "Year", type: "number", group: "content" },
+    {
+      name: "year",
+      title: "Year",
+      type: "string",
+      group: "content",
+      description: "Example: 2024",
+    },
     { name: "duration", title: "Project Duration", type: "string", group: "content" },
     { name: "size", title: "Size/Dimensions", type: "string", group: "content" },
     { name: "materials", title: "Materials", type: "array", of: [{ type: "string" }], group: "content" },
@@ -63,7 +75,6 @@ const project = {
       title: "Hero Image",
       type: "imageWithAlt",
       group: "media",
-      validation: (Rule: Rule) => Rule.required(),
     },
     { name: "heroVideo", title: "Hero Video URL", type: "url", group: "media" },
     {
@@ -93,7 +104,7 @@ const project = {
         {
           type: "object",
           fields: [
-            { name: "name", title: "Name", type: "string", validation: (Rule: Rule) => Rule.required() },
+            { name: "name", title: "Name", type: "string" },
             { name: "role", title: "Role", type: "string" },
             { name: "organization", title: "Organization", type: "string" },
           ],
@@ -111,12 +122,12 @@ const project = {
     select: {
       title: "title",
       media: "heroImage",
-      category: "category.title",
+      categoryTitle: "category->title",
     },
-    prepare({ title, media, category }: any) {
+    prepare({ title, media, categoryTitle }: any) {
       return {
-        title,
-        subtitle: category,
+        title: title || "Untitled Project",
+        subtitle: categoryTitle || "No category",
         media,
       }
     },
