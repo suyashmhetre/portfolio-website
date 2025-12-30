@@ -17,7 +17,7 @@ type GalleryItem = {
 }
 
 export default async function GalleryPage() {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   const items = await sanityFetch<GalleryItem[]>({
     query: galleryQuery,
     tags: ["galleryItem"],

@@ -8,7 +8,7 @@ type Press = { title?: string; publication?: string; date?: string; link?: strin
 type Testimonial = { quote?: string; author?: string; role?: string; organization?: string }
 
 export default async function RecognitionPage() {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   const [awards, press, testimonials] = await Promise.all([
     sanityFetch<Award[]>({ query: awardsQuery, tags: ["award"], preview: isEnabled }),
     sanityFetch<Press[]>({ query: pressQuery, tags: ["press"], preview: isEnabled }),

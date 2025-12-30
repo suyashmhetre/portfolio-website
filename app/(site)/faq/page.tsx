@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 type FaqItem = { question?: string; answer?: any; category?: string }
 
 export default async function FaqPage() {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
   const faqs = await sanityFetch<FaqItem[]>({
     query: faqQuery,
     tags: ["faq"],
