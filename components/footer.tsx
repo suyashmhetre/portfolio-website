@@ -15,8 +15,8 @@ export function Footer({ settings, contactInfo }: FooterProps) {
   // Extract data from CMS or use defaults
   const siteTitle = settings?.siteTitle || "Badhuche"
   const contactSummary = settings?.contactSummary || "Reimagining spaces as lasting cultural landmarks through monumental art and sculptural excellence."
-  const email = contactInfo?.email || "design@perfectpixel.co.in"
-  const phone = contactInfo?.phone || "+91 7972823811"
+  const email = contactInfo?.email?.[0] || "design@perfectpixel.co.in"
+  const phones = contactInfo?.phones?.[0] || "+91 7972823811"
   const address = contactInfo?.address || "Mumbai, Maharashtra\nIndia"
   const addresses = [
     {
@@ -107,10 +107,10 @@ export function Footer({ settings, contactInfo }: FooterProps) {
                     {email}
                   </a>
                   <a
-                    href={`tel:${phone.replace(/\s/g, '')}`}
+                    href={`tel:${phones.replace(/\s/g, '')}`}
                     className="block text-[#FAF7F2] text-sm font-semibold hover:text-[#b8963f] transition-colors duration-300 drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]"
                   >
-                    {phone}
+                    {phones}
                   </a>
                 </div>
               </div>

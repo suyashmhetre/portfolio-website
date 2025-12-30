@@ -37,8 +37,8 @@ export function NavigationClient({ settings, contactInfo }: NavigationClientProp
     ]
 
   // Contact info from CMS or fallback
-  const email = contactInfo?.email || "desgin@perfectpixel.co.in"
-  const phone = contactInfo?.phone || "+91 7972823811"
+  const email = contactInfo?.email?.[0] || "desgin@perfectpixel.co.in"
+  const phones = contactInfo?.phones?.[0] || "+91 7972823811"
   const location = contactInfo?.address?.split('\n')[0] || "Mumbai,Vadodara,Nashik,Indore"
 
   const menuVariants = {
@@ -178,7 +178,7 @@ export function NavigationClient({ settings, contactInfo }: NavigationClientProp
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[#8B8680] text-xs uppercase tracking-[0.1em]">
                   <span>{location}</span>
                   <span>{email}</span>
-                  <span>{phone}</span>
+                  <span>{phones}</span>
                 </div>
               </motion.div>
             </div>

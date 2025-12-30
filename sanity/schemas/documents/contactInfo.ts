@@ -3,7 +3,7 @@ const contactInfo = {
   title: "Contact Info",
   type: "document",
   fields: [
-    { name: "emails", title: "Emails", type: "array", of: [{ type: "string" }] },
+    { name: "email", title: "Email", type: "array", of: [{ type: "string" }] },
     { name: "phones", title: "Phones", type: "array", of: [{ type: "string" }] },
     { name: "address", title: "Address", type: "text" },
     { name: "mapEmbed", title: "Map Embed URL", type: "url" },

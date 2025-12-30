@@ -74,9 +74,9 @@ export default async function ContactPage() {
               <div className="relative overflow-hidden p-2 pb-6 rounded-sm border border-[#1A1815]/10 bg-[#FAF7F2]/70 backdrop-blur-sm">
                 <TextureOverlay texture="bronze" opacity={0.08} blendMode="multiply" />
                 <span className="oh-label block mb-3">design@perfectpixel.co.in</span>
-                {contactInfo?.emails && contactInfo.emails.length > 0 && (
+                {contactInfo?.email && contactInfo.email.length > 0 && (
                   <div className="space-y-2">
-                    {contactInfo.emails.map((email, idx) => (
+                    {contactInfo.email.map((email, idx) => (
                       <a
                         key={idx}
                         href={`mailto:${email}`}
@@ -96,13 +96,13 @@ export default async function ContactPage() {
                 <span className="oh-label block mb-3">+91 797282311</span>
                 {contactInfo?.phones && contactInfo.phones.length > 0 && (
                   <div className="space-y-2">
-                    {contactInfo.phones.map((phone, idx) => (
+                    {contactInfo.phones.map((phones, idx) => (
                       <a
                         key={idx}
-                        href={`tel:${phone.replace(/\s/g, '')}`}
+                        href={`tel:${phones.replace(/\s/g, '')}`}
                         className="oh-body hover:text-[#1A1815] transition-colors duration-300 link-underline block"
                       >
-                        {phone}
+                        {phones}
                       </a>
                     ))}
                   </div>

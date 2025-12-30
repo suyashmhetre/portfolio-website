@@ -236,7 +236,7 @@ export interface StudioPage {
 
 export interface ContactInfo {
   _id: string
-  emails?: string[]
+  email?: string[]
   phones?: string[]
   address?: string
   mapEmbed?: string

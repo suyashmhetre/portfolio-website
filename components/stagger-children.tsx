@@ -1,8 +1,7 @@
-"use client"
+﻿"use client"
 
-import React from "react"
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
+import React, { useRef } from "react"
+import { motion, useInView, type Variants } from "framer-motion"
 
 interface StaggerChildrenProps {
   children: React.ReactNode
@@ -14,7 +13,7 @@ export function StaggerChildren({ children, className = "", staggerDelay = 0.1 }
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-50px" })
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -24,14 +23,14 @@ export function StaggerChildren({ children, className = "", staggerDelay = 0.1 }
     },
   }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.25, 0.4, 0.25, 1],
+        ease: [0.25, 0.4, 0.25, 1] as unknown as any,
       },
     },
   }

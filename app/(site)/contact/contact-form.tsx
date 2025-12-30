@@ -32,7 +32,7 @@ export default function ContactForm() {
       const formData = {
         name: values.name || "",
         email: values.email || "",
-        phone: values.phone || "",
+        phones: values.phones || "",
         company: values.organization || "",
         projectType: (values.type as "sculpture" | "mural" | "installation" | "memorial" | "other") || "other",
         projectTypeOther:

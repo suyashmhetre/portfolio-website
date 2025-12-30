@@ -38,7 +38,7 @@ export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]{
 
 export const contactInfoQuery = groq`*[_type == "contactInfo"][0]{
   _id,
-  emails,
+  email,
   phones,
   address,
   mapEmbed,
