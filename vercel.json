@@ -1,0 +1,11 @@
+{
+  "buildCommand": "npm install --legacy-peer-deps && next build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "nodeVersion": "24.12.0",
+  "env": {
+    "NEXT_PUBLIC_SANITY_PROJECT_ID": "@env.NEXT_PUBLIC_SANITY_PROJECT_ID",
+    "NEXT_PUBLIC_SANITY_DATASET": "@env.NEXT_PUBLIC_SANITY_DATASET",
+    "SANITY_API_TOKEN": "@env.SANITY_API_TOKEN"
+  }
+}
