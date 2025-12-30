@@ -30,15 +30,12 @@ export function AlternatingContent({
         </TextReveal>
       </div>
       <div className={isImageRight ? "md:order-2" : "md:order-1"}>
-        <ImageReveal direction={isImageRight ? "right" : "left"}>
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            width={800}
-            height={600}
-            className="w-full aspect-[4/3] object-cover"
-          />
-        </ImageReveal>
+        <ImageReveal 
+          src={imageSrc}
+          alt={imageAlt}
+          direction={isImageRight ? "right" : "left"}
+          className="w-full aspect-[4/3] object-cover"
+        />
       </div>
     </div>
   )
@@ -177,16 +174,14 @@ export function StaggeredGallery({ images }: StaggeredGalleryProps) {
         }[image.size || "small"]
 
         return (
-          <ImageReveal key={index} delay={index * 50}>
-            <div className={`relative ${sizeClass} aspect-square`}>
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className="object-cover"
-              />
-            </div>
-          </ImageReveal>
+          <div key={index} className={`relative ${sizeClass} aspect-square`}>
+            <ImageReveal 
+              src={image.src}
+              alt={image.alt}
+              delay={index * 50}
+              className="w-full h-full object-cover"
+            />
+          </div>
         )
       })}
     </div>

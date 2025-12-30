@@ -50,7 +50,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   const related = await getRelated(project.slug?.current, isEnabled)
 
-  const heroUrl = urlFor(project.heroImage)?.width(1600).height(1000).url()
+  const heroUrl = ((urlFor(project.heroImage as any) as any)?.width(1600).height(1000).url()) || null
 
   return (
     <main className="min-h-screen bg-[#FAF7F2] text-[#1A1815]">
@@ -124,7 +124,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             <p className="oh-label mb-4">(Gallery)</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {project.gallery.map((img, idx) => {
-                const imgUrl = urlFor(img)?.width(1200).height(900).url()
+                const imgUrl = ((urlFor(img as any) as any)?.width(1200).height(900).url()) || null
                 if (!imgUrl) return null
                 return (
                   <div key={idx} className="relative w-full aspect-[4/3] overflow-hidden">

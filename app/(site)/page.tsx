@@ -49,7 +49,7 @@ export default async function HomePage() {
   // Default content if CMS data not available
   const heroSubtitle = homepage?.heroSubtitle || "Monumental Artistic Works & Public Installations"
   const heroImage = homepage?.heroImage
-    ? urlFor(homepage.heroImage)?.width(1200).height(1500).url() || "/ayodhya.jpg"
+    ? ((urlFor(homepage.heroImage as any) as any)?.width(1200).height(1500).url() || "/ayodhya.jpg")
     : "/ayodhya.jpg"
   const stats = homepage?.stats || [
     { _key: "1", value: "50", suffix: "+", label: "Monumental Projects Completed" },
@@ -62,7 +62,7 @@ export default async function HomePage() {
   const projects = featuredProjects.slice(0, 16).map((project, index) => ({
     title: project.title,
     number: String(index + 1).padStart(2, "0"),
-    image: project.heroImage ? urlFor(project.heroImage)?.width(800).height(1000).url() || "/ayodhya.jpg" : "/ayodhya.jpg",
+    image: project.heroImage ? ((urlFor(project.heroImage as any) as any)?.width(800).height(1000).url() || "/ayodhya.jpg") : "/ayodhya.jpg",
     href: `/works/${project.slug.current}`,
     size: (["large", "medium", "small"][index % 3] as "large" | "medium" | "small"),
     description: project.excerpt || "",

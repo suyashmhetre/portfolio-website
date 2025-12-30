@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Revalidate by tag
-    revalidateTag(body._type)
+    revalidateTag(body._type, "default")
     
     // Also revalidate specific paths based on document type
     switch (body._type) {

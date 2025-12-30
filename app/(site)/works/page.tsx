@@ -47,7 +47,7 @@ export default async function WorksPage({ searchParams }: Props) {
   const mapped = projects.map((proj, idx) => ({
     title: proj.title || "Untitled Project",
     number: String(idx + 1).padStart(2, "0"),
-    image: proj.heroImage ? (urlFor(proj.heroImage as any)?.width(800).height(1000).url() || "/placeholder.jpg") : "/placeholder.jpg",
+    image: proj.heroImage ? ((urlFor(proj.heroImage as any) as any)?.width(800).height(1000).url() || "/placeholder.jpg") : "/placeholder.jpg",
     href: proj.slug?.current ? `/works/${proj.slug.current}` : "#",
     size: "medium" as const,
     description: proj.excerpt || "",

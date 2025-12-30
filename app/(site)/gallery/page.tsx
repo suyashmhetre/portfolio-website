@@ -40,7 +40,7 @@ export default async function GalleryPage() {
       <section className="px-6 md:px-10 pb-24">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {items.map((item, idx) => {
-            const imgUrl = urlFor(item.image)?.width(1000).height(1200).url()
+            const imgUrl = ((urlFor(item.image as any) as any)?.width(1000).height(1200).url()) || null
             if (!imgUrl) return null
             return (
               <div key={idx} className="space-y-2">
