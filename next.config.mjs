@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
+  allowedDevOrigins: [
+    "http://localhost:3000",
+    "http://192.168.29.226:3000",
+  ],
   // Add to next.config.js:
 images: {
   formats: ['image/webp'],

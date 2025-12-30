@@ -62,7 +62,7 @@ export default async function HomePage() {
   const projects = featuredProjects.slice(0, 16).map((project, index) => ({
     title: project.title,
     number: String(index + 1).padStart(2, "0"),
-    image: project.heroImage ? urlFor(project.heroImage)?.width(800).height(900).url() || "/ayodhya.jpg" : "/ayodhya.jpg",
+    image: project.heroImage ? urlFor(project.heroImage)?.width(800).height(1000).url() || "/ayodhya.jpg" : "/ayodhya.jpg",
     href: `/works/${project.slug.current}`,
     size: (["large", "medium", "small"][index % 3] as "large" | "medium" | "small"),
     description: project.excerpt || "",
@@ -76,8 +76,8 @@ export default async function HomePage() {
       <section
         className="relative min-h-screen w-full  overflow-hidden
              px-4 sm:px-6 md:px-10
-             pt-35 sm:pt-40 pb-22 sm:pb-22
-             flex items-center bg-repeat-space bg-top bg-[length:100%]"
+             pt-35 sm:pt-40
+             flex items-center bg-cover bg-top bg-[length:100%]"
         style={{
           backgroundImage: `url(${heroImage})`,
         }}

@@ -4,6 +4,11 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
   darkMode: ['class'],
+  safelist: [
+    'duration-[800ms]',
+    'ease-[cubic-bezier(0.76,0,0.24,1)]',
+    'ease-[cubic-bezier(0.77,0,0.175,1)]',
+  ],
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
