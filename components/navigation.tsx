@@ -1,1 +1,1 @@
-export { NavigationClient as navigation } from "./navigation-client"
+import { NavigationClient as Navigation } from "@/components/navigation-client"
