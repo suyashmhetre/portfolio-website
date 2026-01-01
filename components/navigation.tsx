@@ -1,1 +1,1 @@
-export { NavigationClient as Navigation } from "./navigation-client"
+export { NavigationClient as navigation } from "./navigation-client"
