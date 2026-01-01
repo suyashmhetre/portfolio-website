@@ -8,7 +8,7 @@ import { ScrollProgress } from "@/components/scroll-progress"
 import { PaperTexture } from "@/components/paper-texture"
 import { HeroGradient } from "@/components/hero-gradient"
 import { SmoothScroll } from "@/components/smooth-scroll"
-import { Navigation } from "@/components/navigation"
+import { NavigationClient as Navigation } from "@/components/navigation-client"
 import { Footer } from "@/components/footer"
 import { PreviewBar } from "@/components/preview-bar"
 import { sanityFetch } from "@/sanity/lib/fetch"
@@ -86,7 +86,7 @@ export default async function SiteLayout({
       <PaperTexture />
       <CustomCursor />
       <ScrollProgress />
-      <Navigation settings={settings} contactInfo={contactInfo} />
+   <Navigation settings={settings} contactInfo={contactInfo} />
       <SmoothScroll>
         <PageTransition>{children}</PageTransition>
       </SmoothScroll>
